@@ -25,6 +25,6 @@ jobs:
       - name: Install libEGL
         run: |
           sudo apt-get update
-          sudo apt-get install -y portaudio19-dev libegl1 libglu1-mesa libgl1-mesa-dev xvfb
+          sudo apt-get install -y portaudio19-dev libegl1 libglu1-mesa libgl1-mesa-dev xvfb libxcb-cursor0
       - name: Run tests
         run: pytest -s
