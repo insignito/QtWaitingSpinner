@@ -51,6 +51,7 @@ class WaitingSpinner(QWidget):
         radius: int = 10,
         speed: float = math.pi / 2,
         color: QColor = QColor(0, 0, 0),
+        opacity: float = math.pi,
     ) -> None:
         super().__init__(parent)
 
@@ -59,7 +60,7 @@ class WaitingSpinner(QWidget):
 
         self._color: QColor = color
         self._roundness: float = roundness
-        self._minimum_trail_opacity: float = math.pi
+        self._minimum_trail_opacity: float = opacity
         self._trail_fade_percentage: float = fade
         self._revolutions_per_second: float = speed
         self._number_of_lines: int = lines
