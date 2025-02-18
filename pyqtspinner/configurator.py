@@ -3,6 +3,7 @@ import sys
 from random import random
 
 from PySide6.QtCore import Qt, Slot
+from PySide6.QtGui import QClipboard
 from PySide6.QtWidgets import (
     QApplication,
     QColorDialog,
@@ -159,7 +160,7 @@ class SpinnerConfigurator(QWidget):
         self.spinner.start()
         self.show()
 
-    @Slot(name="randomize")
+    @pyqtSlot(name="randomize")
     def _randomize(self) -> None:
         self.sb_roundness.setValue(random() * 1000)
         self.sb_opacity.setValue(random() * 50)
@@ -170,13 +171,13 @@ class SpinnerConfigurator(QWidget):
         self.sb_inner_radius.setValue(math.floor(random() * 30))
         self.sb_rev_s.setValue(random())
 
-    @Slot(name="show_color_picker")
+    @pyqtSlot(name="show_color_picker")
     def show_color_picker(self) -> None:
         """Set the color for the spinner."""
         assert self.spinner
         self.spinner.color = QColorDialog.getColor()
 
-    @Slot(name="show_init_args")
+    @pyqtSlot(name="show_init_args")
     def show_init_args(self) -> None:
         """Display used arguments."""
         assert self.spinner
@@ -196,8 +197,8 @@ class SpinnerConfigurator(QWidget):
         msg_box.setText(text)
         msg_box.setWindowTitle("Text was copied to clipboard")
         clipboard = QApplication.clipboard()
-        clipboard.clear(mode=clipboard.Clipboard)
-        clipboard.setText(text, mode=clipboard.Clipboard)
+        clipboard.clear(mode=QClipboard.Mode.Clipboard)
+        clipboard.setText(text, mode=QClipboard.Mode.Clipboard)
         print(text)
         msg_box.exec_()
 
