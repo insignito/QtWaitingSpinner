@@ -1,1 +1,1 @@
-Waiting spinner for PyQt5
+Waiting spinner for PySide6
