@@ -160,7 +160,7 @@ class SpinnerConfigurator(QWidget):
         self.spinner.start()
         self.show()
 
-    @pyqtSlot(name="randomize")
+    @Slot(name="randomize")
     def _randomize(self) -> None:
         self.sb_roundness.setValue(random() * 1000)
         self.sb_opacity.setValue(random() * 50)
@@ -171,13 +171,13 @@ class SpinnerConfigurator(QWidget):
         self.sb_inner_radius.setValue(math.floor(random() * 30))
         self.sb_rev_s.setValue(random())
 
-    @pyqtSlot(name="show_color_picker")
+    @Slot(name="show_color_picker")
     def show_color_picker(self) -> None:
         """Set the color for the spinner."""
         assert self.spinner
         self.spinner.color = QColorDialog.getColor()
 
-    @pyqtSlot(name="show_init_args")
+    @Slot(name="show_init_args")
     def show_init_args(self) -> None:
         """Display used arguments."""
         assert self.spinner
